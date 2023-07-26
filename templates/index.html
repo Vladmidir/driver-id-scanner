@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}Driver's ID Scanner{% endblock %}</h1>
+
+<div class="content-container">
+    <div class="content-body">
+        <img src="{{ url_for('video_feed') }}" alt="camera video">
+    </div>
+    <div class="content-footer">
+        <form id="insurance-form" action="#">            
+            <label for="insurance-number">Insurance Number</label>
+            <input type="text" name="insurance-number" id="insurance-number">
+        </form>
+        <button>Take picture</button>
+    </div>
+</div>
+{% endblock %}

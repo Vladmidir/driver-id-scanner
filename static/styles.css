@@ -1,0 +1,48 @@
+* {
+    /*normalize */
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /*main axis*/
+    align-items: center; /*cross axis*/
+}
+
+.content-body {
+    flex-grow: 2;
+    min-height: 80vh;
+}
+
+.content-footer {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    justify-content: space-between;
+}
+
+#insurance-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#insurance-form {
+    text-align: center;
+}
