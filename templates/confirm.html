@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}Review and Submit{% endblock %}</h1>
+<div class="confirm-container">
+    <div class="snapshot-container">
+        <h3>Picture taken</h3>
+        <img src="{{url_for('static', filename='snapshot.jpg')}}" />
+    </div>
+
+    <div class="extracted-container">
+        <h3 id="text-found">Text found</h3>
+        <form action="#" class="extracted-form">
+            <div>
+                <label class="extracted-label" for="insurance-number">Insurance Number</label>
+                <input type="text" name="insurance-number" id="insurance-number" autocomplete="off"
+                    value="{{insurance}}">
+            </div>
+            <div>
+                <label class="extracted-label" for="">State/Province</label>
+                <input type="text">
+            </div>
+            <div>
+                <label class="extracted-label" for="">License Number</label>
+                <input type="text">
+            </div>
+            <div>
+                <label class="extracted-label" for="">Expiry Date</label>
+                <input type="text">
+            </div>
+            <div>
+                <label class="extracted-label" for="">Date of Birth</label>
+                <input type="text">
+            </div>
+            <div>
+                <label class="extracted-label" for="">Class</label>
+                <input type="text">
+            </div>
+            <button>Submit</button>
+            <a id="retake-link" href="{{url_for('indexInsurance', insurance=insurance)}}"><button type="button"  id="retake-button">Retake Picture</button></a>
+        </form>
+        
+    </div>
+</div>
+
+
+
+
+{% endblock %}
