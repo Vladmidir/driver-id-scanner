@@ -12,37 +12,85 @@
 }
 
 body {
-    min-height: 100vh;
+    margin-left: 2em;
+    margin-right: 2em;
+    zoom: 120%;
 }
 
-h1 {
+h1, h2, h3, h4, h5, h6{
     text-align: center;
 }
 
-.content-container {
+input, button {
+    padding: .25em;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+
+.index-container {
     display: flex;
     flex-direction: column;
-    justify-content: center; /*main axis*/
+    justify-content: space-between; /*main axis*/
     align-items: center; /*cross axis*/
 }
 
-.content-body {
-    flex-grow: 2;
-    min-height: 80vh;
-}
-
-.content-footer {
+.index-footer {
+    margin-top: 1.5em;
+    width: 50%;
     display: flex;
     flex-direction: row;
-    width: 50%;
     justify-content: space-between;
 }
 
 #insurance-form {
+    width: 100%;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
 }
 
-#insurance-form {
-    text-align: center;
+.confirm-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
+
+.extracted-container {
+    display: grid;
+    align-self: stretch;
+    justify-content: space-between;
+}
+
+.extracted-form {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 1em;
+    justify-self: center;
+}
+
+.extracted-label {
+    display: inline-block;
+    width: 15em;
+}
+
+#text-found {
+    align-self: flex-start;
+}
+
+#retake-link {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#retake-button {
+    width: 70%;
+}
+
+

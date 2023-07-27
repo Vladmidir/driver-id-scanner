@@ -4,16 +4,21 @@
 
 <h1>{% block title %}Driver's ID Scanner{% endblock %}</h1>
 
-<div class="content-container">
-    <div class="content-body">
+<div class="index-container">
+    <div class="index-body">
         <img src="{{ url_for('video_feed') }}" alt="camera video">
     </div>
-    <div class="content-footer">
-        <form id="insurance-form" action="#">            
-            <label for="insurance-number">Insurance Number</label>
-            <input type="text" name="insurance-number" id="insurance-number">
+    <div class="index-footer">
+        <form id="insurance-form" method="POST" action="{{ url_for('processImage') }}">
+            <div>
+                <label for="insurance-number">Insurance Number</label>
+                <br>
+                <input type="text" name="insurance-number" id="insurance-number" autocomplete="off"
+                    value="{{insurance}}" required>
+            </div>
+            <button type="submit">Take picture</button>
         </form>
-        <button>Take picture</button>
+
     </div>
 </div>
 {% endblock %}
