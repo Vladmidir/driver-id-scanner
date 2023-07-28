@@ -11,40 +11,37 @@
 
     <div class="extracted-container">
         <h3 id="text-found">Text found</h3>
-        <form action="#" class="extracted-form">
+        <form method="POST" action="{{ url_for('confirmed') }}" class="extracted-form">
             <div>
                 <label class="extracted-label" for="insurance-number">Insurance Number</label>
                 <input type="text" name="insurance-number" id="insurance-number" autocomplete="off"
-                    value="{{insurance}}">
+                    value="{{driver['insurance']}}">
             </div>
             <div>
-                <label class="extracted-label" for="">State/Province</label>
-                <input type="text">
+                <label class="extracted-label" for="state">State/Province</label>
+                <input type="text" name="state" value="{{driver['state']}}">
             </div>
             <div>
-                <label class="extracted-label" for="">License Number</label>
-                <input type="text">
+                <label class="extracted-label" for="license-number">License Number</label>
+                <input type="text" name="license-number" value="{{driver['license-number']}}" autocomplete="off">
             </div>
             <div>
-                <label class="extracted-label" for="">Expiry Date</label>
-                <input type="text">
+                <label class="extracted-label" for="expiry-date">Expiry Date</label>
+                <input type="text" name="expiry-date" value="{{driver['expiry-date']}}" autocomplete="off">
             </div>
             <div>
-                <label class="extracted-label" for="">Date of Birth</label>
-                <input type="text">
+                <label class="extracted-label" for="birth-day">Date of Birth</label>
+                <input type="text" name="birth-day" value="{{driver['birth-day']}}" autocomplete="off">
             </div>
             <div>
-                <label class="extracted-label" for="">Class</label>
-                <input type="text">
+                <label class="extracted-label" for="license-class">Class</label>
+                <input type="text" name="license-class" value="{{driver['license-class']}}">
             </div>
-            <button>Submit</button>
+            <button type="submit">Submit</button>
             <a id="retake-link" href="{{url_for('indexInsurance', insurance=insurance)}}"><button type="button"  id="retake-button">Retake Picture</button></a>
         </form>
         
     </div>
 </div>
-
-
-
 
 {% endblock %}

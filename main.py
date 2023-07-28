@@ -10,35 +10,52 @@ basedir = os.path.dirname(os.path.abspath(__file__))
 # Connect the web cam
 camera = cv2.VideoCapture(0)
 
+# Dummy dictionary
+driver_data_dict = {
+    "insurance": "102",
+    "state": "ON",
+    "license-number": "123",
+    "expiry-date": "02/25",
+    "birth-day": "21.02.1980",
+    "license-class": "G",
+}
+
+
 # Connect the camera and let user take a picture
-# TODO: Pass the insurance as optional argument, so the user does not have to reenter it on picture retake.
-@app.get('/')
+@app.get("/")
 def index():
     return render_template("index.html")
 
-@app.get('/<insurance>')
+
+@app.get("/<insurance>")
 def indexInsurance(insurance):
     return render_template("index.html", insurance=insurance)
 
+
 # Save the picture & process the input & render the confirmation page
-@app.post('/')
+@app.post("/")
 def processImage():
     # Record a frame
     frame = gen_image(camera)
     # Turn off the camera
     # camera.release() # Keep the camera on, up until the database submition
     # Save the frame
-    snapshot_location = os.path.join(basedir, './static/snapshot.jpg')
+    snapshot_location = os.path.join(basedir, "./static/snapshot.jpg")
     cv2.imwrite(snapshot_location, frame)
     # Extract insurance number
-    insurance_number = request.form['insurance-number']
+    driver_data_dict["insurance"] = request.form["insurance-number"]
+    # TODO: Extract the data from image here, record it into
     # Render template
-    return render_template('confirm.html', insurance=insurance_number)
+    return render_template("confirm.html", driver=driver_data_dict)
 
-
+@app.post("/confirmed")
+def confirmed():
+    return request.form
 
 # Stream the webcam
-@app.route('/video_feed')
+@app.route("/video_feed")
 def video_feed():
     # Supply the frames as a response
-    return Response(gen_frames(camera), mimetype='multipart/x-mixed-replace; boundary=frame')
+    return Response(
+        gen_frames(camera), mimetype="multipart/x-mixed-replace; boundary=frame"
+    )
