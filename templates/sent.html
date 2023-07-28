@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>{% block title %}The License is Submitted{% endblock %}</h1>
+<div>
+    <a href="{{url_for('index')}}"><button>Scan Another License</button></a>
+</div>
+<div>
+    <h3>Data submitted:</h3>
+    <ul>
+        {% for key, value in data_dict.items() %}
+            <li>{{key}}: {{value}}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h3>Image submitted:</h3>
+    <img src="{{url_for('static', filename='snapshot.jpg')}}">
+</div>
+
+{% endblock %}

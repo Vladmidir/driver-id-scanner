@@ -10,7 +10,7 @@ basedir = os.path.dirname(os.path.abspath(__file__))
 # Connect the web cam
 camera = cv2.VideoCapture(0)
 
-# Dummy dictionary
+# Data dictionary
 driver_data_dict = {
     "insurance": "102",
     "state": "ON",
@@ -38,19 +38,21 @@ def processImage():
     # Record a frame
     frame = gen_image(camera)
     # Turn off the camera
-    # camera.release() # Keep the camera on, up until the database submition
+    # camera.release() # Keep the camera on, while the app is runing (for simplicity)
     # Save the frame
     snapshot_location = os.path.join(basedir, "./static/snapshot.jpg")
     cv2.imwrite(snapshot_location, frame)
     # Extract insurance number
     driver_data_dict["insurance"] = request.form["insurance-number"]
-    # TODO: Extract the data from image here, record it into
+    # TODO: Extract the data from image here, record it into driver_data_dict
     # Render template
     return render_template("confirm.html", driver=driver_data_dict)
 
 @app.post("/confirmed")
 def confirmed():
-    return request.form
+    data_dict = request.form
+    # TODO: Write the data to the database here
+    return render_template('sent.html', data_dict=data_dict)
 
 # Stream the webcam
 @app.route("/video_feed")
